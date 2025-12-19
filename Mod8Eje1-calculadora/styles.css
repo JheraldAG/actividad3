@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    background: linear-gradient(135deg, #020617, #0f172a);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -14,129 +14,104 @@ body {
     padding: 2rem;
 }
 
-.calculator {
-    background: #121826;
+.container {
+    background: #020617;
+    padding: 3rem;
     border-radius: 20px;
-    padding: 2rem;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-    max-width: 400px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    text-align: center;
+    max-width: 500px;
     width: 100%;
 }
 
-.display {
-    background: #0b132b;
-    border-radius: 10px;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-    text-align: right;
-    min-height: 100px;
+.titulo {
+    color: #e5e7eb;
+    margin-bottom: 2rem;
+    font-size: 2rem;
 }
 
-.previous-operand {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 1.2rem;
-    min-height: 1.5rem;
+.contador-display {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    transition: background-color 0.3s ease;
 }
 
-.current-operand {
-    color: #eaeaea;
-    font-size: 2.5rem;
-    font-weight: bold;
-    word-wrap: break-word;
-    word-break: break-all;
+.numero {
+    font-size: 5rem;
+    font-weight: 800;
+    color: #000;
+    transition: color 0.3s ease;
 }
 
-.buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.5rem;
-    margin-bottom: 1rem;
+.botones {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .btn {
-    padding: 1.5rem;
-    font-size: 1.2rem;
+    flex: 1;
+    min-width: 120px;
+    padding: 15px;
     border: none;
     border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s;
     font-weight: 600;
+    cursor: pointer;
+    color: white;
+    transition: 0.2s;
 }
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
-.btn:active {
-    transform: translateY(0);
-}
-
-.btn-number {
-    background: #1e293b;
-    color: #eaeaea;
-}
-
-.btn-number:hover {
-    background: #334155;
-}
-
-.btn-operator {
-    background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
-    color: white;
-}
-
-.btn-clear {
-    background: #ef4444;
-    color: white;
-}
-
-.btn-delete {
-    background: #f97316;
-    color: white;
-}
-
-.btn-equals {
+.btn-success {
     background: #22c55e;
-    color: white;
 }
 
-.span-2 {
-    grid-column: span 2;
-}
-
-.history {
-    border-top: 2px solid #334155;
-    padding-top: 1rem;
-}
-
-.history h3 {
-    color: #eaeaea;
-    margin-bottom: 1rem;
-}
-
-.history-list {
-    max-height: 200px;
-    overflow-y: auto;
-    margin-bottom: 1rem;
-}
-
-.history-item {
-    background: #1e293b;
-    padding: 0.5rem;
-    margin-bottom: 0.3rem;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    color: #cbd5e1;
-}
-
-.btn-clear-history {
-    width: 100%;
-    padding: 0.8rem;
+.btn-danger {
     background: #ef4444;
-    color: white;
-    border: none;
+}
+
+.btn-secondary {
+    background: #38bdf8;
+    color: #020617;
+}
+
+.botones-bonus {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-small {
+    padding: 10px 20px;
     border-radius: 8px;
+    border: none;
+    font-weight: bold;
     cursor: pointer;
-    font-weight: 600;
+    color: white;
+}
+
+.btn-success-light {
+    background: linear-gradient(135deg, #22c55e, #4ade80);
+}
+
+.btn-danger-light {
+    background: linear-gradient(135deg, #ef4444, #fb7185);
+}
+
+.info {
+    background: #020617;
+    padding: 1rem;
+    border-left: 4px solid #38bdf8;
+    border-radius: 8px;
+}
+
+.info p {
+    color: #e5e7eb;
 }
