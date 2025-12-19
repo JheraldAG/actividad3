@@ -12,6 +12,8 @@ body {
     justify-content: center;
     align-items: center;
     padding: 2rem;
+    transition: background-color 0.4s ease;
+
 }
 
 .container {
@@ -115,3 +117,4 @@ body {
 .info p {
     color: #e5e7eb;
 }
+
