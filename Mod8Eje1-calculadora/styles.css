@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -15,16 +15,16 @@ body {
 }
 
 .calculator {
-    background: white;
+    background: #121826;
     border-radius: 20px;
     padding: 2rem;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
     max-width: 400px;
     width: 100%;
 }
 
 .display {
-    background: #1a1a2e;
+    background: #0b132b;
     border-radius: 10px;
     padding: 1.5rem;
     margin-bottom: 1rem;
@@ -39,7 +39,7 @@ body {
 }
 
 .current-operand {
-    color: white;
+    color: #eaeaea;
     font-size: 2.5rem;
     font-weight: bold;
     word-wrap: break-word;
@@ -65,7 +65,7 @@ body {
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 .btn:active {
@@ -73,31 +73,31 @@ body {
 }
 
 .btn-number {
-    background: #f0f0f0;
-    color: #333;
+    background: #1e293b;
+    color: #eaeaea;
 }
 
 .btn-number:hover {
-    background: #e0e0e0;
+    background: #334155;
 }
 
 .btn-operator {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
     color: white;
 }
 
 .btn-clear {
-    background: #ff6b6b;
+    background: #ef4444;
     color: white;
 }
 
 .btn-delete {
-    background: #ffa502;
+    background: #f97316;
     color: white;
 }
 
 .btn-equals {
-    background: #4caf50;
+    background: #22c55e;
     color: white;
 }
 
@@ -106,12 +106,12 @@ body {
 }
 
 .history {
-    border-top: 2px solid #e0e0e0;
+    border-top: 2px solid #334155;
     padding-top: 1rem;
 }
 
 .history h3 {
-    color: #333;
+    color: #eaeaea;
     margin-bottom: 1rem;
 }
 
@@ -122,18 +122,18 @@ body {
 }
 
 .history-item {
-    background: #f8f9fa;
+    background: #1e293b;
     padding: 0.5rem;
     margin-bottom: 0.3rem;
     border-radius: 5px;
     font-size: 0.9rem;
-    color: #666;
+    color: #cbd5e1;
 }
 
 .btn-clear-history {
     width: 100%;
     padding: 0.8rem;
-    background: #ff6b6b;
+    background: #ef4444;
     color: white;
     border: none;
     border-radius: 8px;
