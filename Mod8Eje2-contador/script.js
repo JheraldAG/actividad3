@@ -28,150 +28,75 @@ const btnDecrementar5 = document.getElementById("btnDecrementar5");
 const mensajeElement = document.getElementById("mensaje");
 const displayContador = document.querySelector(".contador-display");
 
-// ===== VARIABLE DEL CONTADOR =====
-// Intenta cargar el valor desde LocalStorage, si no existe usa 0
 let contador = parseInt(localStorage.getItem("contador")) || 0;
 
-// ===== FUNCIONES =====
+function actualizarColores(valor) {
+    const v = Math.max(-100, Math.min(100, valor));
+    const intensidad = Math.abs(v) / 100;
 
-/**
- * Actualiza el display del contador en el DOM
- * Cambia colores y clases según el valor
- */
+    let r = 255, g = 255, b = 255;
+
+    if (v > 0) {
+        r = Math.round(255 * (1 - intensidad));
+        g = 255;
+        b = Math.round(255 * (1 - intensidad));
+    } else if (v < 0) {
+        r = 255;
+        g = Math.round(255 * (1 - intensidad));
+        b = Math.round(255 * (1 - intensidad));
+    }
+
+    const color = `rgb(${r}, ${g}, ${b})`;
+
+    contadorElement.style.color = color;
+    displayContador.style.backgroundColor = color;
+}
+
+function actualizarMensaje() {
+    if (contador > 0) {
+        mensajeElement.innerHTML = `El contador está en <strong>positivo</strong> (+${contador})`;
+    } else if (contador < 0) {
+        mensajeElement.innerHTML = `El contador está en <strong>negativo</strong> (${contador})`;
+    } else {
+        mensajeElement.innerHTML = `El contador está en <strong>cero</strong>`;
+    }
+}
+
 function actualizarDisplay() {
-  // Actualizar número
-  contadorElement.textContent = contador;
-
-  // Remover clases previas
-  contadorElement.classList.remove("positivo", "negativo", "neutro");
-  displayContador.classList.remove("bg-positivo", "bg-negativo", "bg-neutro");
-
-  // Determinar estado y aplicar clases
-  if (contador > 0) {
-    contadorElement.classList.add("positivo");
-    displayContador.classList.add("bg-positivo");
-    actualizarMensaje("positivo");
-  } else if (contador < 0) {
-    contadorElement.classList.add("negativo");
-    displayContador.classList.add("bg-negativo");
-    actualizarMensaje("negativo");
-  } else {
-    contadorElement.classList.add("neutro");
-    displayContador.classList.add("bg-neutro");
-    actualizarMensaje("neutro");
-  }
-
-  // Guardar en LocalStorage
-  localStorage.setItem("contador", contador);
+    contador = Math.max(-100, Math.min(100, contador));
+    contadorElement.textContent = contador;
+    actualizarColores(contador);
+    actualizarMensaje();
+    localStorage.setItem("contador", contador);
 }
 
-/**
- * Actualiza el mensaje informativo según el estado
- * @param {string} estado - 'positivo', 'negativo' o 'neutro'
- */
-function actualizarMensaje(estado) {
-  let mensaje = "";
-
-  switch (estado) {
-    case "positivo":
-      mensaje = `El contador está en <strong>positivo</strong> (+${contador})`;
-      break;
-    case "negativo":
-      mensaje = `El contador está en <strong>negativo</strong> (${contador})`;
-      break;
-    case "neutro":
-      mensaje = "El contador está en <strong>cero</strong>";
-      break;
-  }
-
-  mensajeElement.innerHTML = mensaje;
-}
-
-/**
- * Incrementa el contador en una cantidad específica
- * @param {number} cantidad - Cantidad a incrementar (por defecto 1)
- */
-function incrementar(cantidad = 1) {
-  contador += cantidad;
-  actualizarDisplay();
-}
-
-/**
- * Decrementa el contador en una cantidad específica
- * @param {number} cantidad - Cantidad a decrementar (por defecto 1)
- */
-function decrementar(cantidad = 1) {
-  contador -= cantidad;
-  actualizarDisplay();
-}
-
-/**
- * Resetea el contador a 0
- */
-function resetear() {
-  contador = 0;
-  actualizarDisplay();
-}
-
-// ===== EVENT LISTENERS =====
-
-// Incrementar +1
 btnIncrementar.addEventListener("click", () => {
-  incrementar(1);
+    contador++;
+    actualizarDisplay();
 });
 
-// Decrementar -1
 btnDecrementar.addEventListener("click", () => {
-  decrementar(1);
+    contador--;
+    actualizarDisplay();
 });
 
-// Resetear a 0
-btnResetear.addEventListener("click", resetear);
+btnResetear.addEventListener("click", () => {
+    contador = 0;
+    actualizarDisplay();
+});
 
-// Incrementar +5 (BONUS)
 btnIncrementar5.addEventListener("click", () => {
-  incrementar(5);
+    contador += 5;
+    actualizarDisplay();
 });
 
-// Decrementar -5 (BONUS)
 btnDecrementar5.addEventListener("click", () => {
-  decrementar(5);
+    contador -= 5;
+    actualizarDisplay();
 });
 
-// BONUS: Atajos de teclado
-document.addEventListener("keydown", (e) => {
-  switch (e.key) {
-    case "ArrowUp":
-      incrementar(1);
-      break;
-    case "ArrowDown":
-      decrementar(1);
-      break;
-    case "r":
-    case "R":
-      resetear();
-      break;
-    case "+":
-      incrementar(5);
-      break;
-    case "-":
-      decrementar(5);
-      break;
-  }
-});
-
-// ===== INICIALIZACIÓN =====
-// Mostrar el valor inicial (puede venir de LocalStorage)
 actualizarDisplay();
 
-// Mensaje de bienvenida en consola
-console.log("🎮 Contador Interactivo iniciado");
-console.log("💡 Atajos de teclado:");
-console.log("  ↑ : +1");
-console.log("  ↓ : -1");
-console.log("  + : +5");
-console.log("  - : -5");
-console.log("  R : Resetear");
 
 /* ===============================================
    NOTAS EDUCATIVAS
@@ -206,3 +131,4 @@ console.log("  R : Resetear");
       - Separar lógica de presentación
    
    =============================================== */
+
