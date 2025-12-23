@@ -5,7 +5,7 @@ const movesEl = document.getElementById("moves");
 const scoreEl = document.getElementById("score");
 const resetBtn = document.getElementById("resetBtn");
 
-let icons = ["🍎", "🍌", "🍇", "🍓", "🍉", "🍒", "🍑", "🍍"];
+let icons = ["🌕", "🍌", "🍇", "🐒​", "🍉", "🍒", "🧸", "🍍"];
 let cards = [];
 let firstCard = null;
 let secondCard = null;
@@ -147,3 +147,4 @@ resetBtn.addEventListener("click", startGame);
 
 // Inicio automático
 startGame();
+
