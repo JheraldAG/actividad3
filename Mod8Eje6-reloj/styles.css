@@ -1,42 +1,58 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ===============================
+   VARIABLES DE COLOR
+================================ */
+:root {
+    --primary: #22d3ee;        /* Cian brillante */
+    --secondary: #0f172a;      /* Azul noche */
+    --accent: #14b8a6;         /* Verde turquesa */
+    --bg-card: rgba(255, 255, 255, 0.95);
+    --text-main: #1f2933;
+    --text-muted: #6b7280;
+    --shadow-light: rgba(0, 0, 0, 0.3);
+    --shadow-medium: rgba(0, 0, 0, 0.4);
 }
 
+/* ===============================
+   BODY
+================================ */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2rem;
+    color: var(--text-main);
 }
 
-.container {
-    max-width: 600px;
-    width: 100%;
-}
-
+/* ===============================
+   CARD
+================================ */
 .clock-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--bg-card);
     padding: 3rem;
     border-radius: 30px;
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 25px 70px var(--shadow-light);
     text-align: center;
     backdrop-filter: blur(10px);
     margin-bottom: 2rem;
 }
 
+/* ===============================
+   GREETING
+================================ */
 .greeting {
     font-size: 1.8rem;
-    color: #667eea;
+    color: var(--accent);
     font-weight: 600;
     margin-bottom: 2rem;
     animation: fadeIn 1s ease;
 }
 
+/* ===============================
+   TIME DISPLAY
+================================ */
 .time-display {
     display: flex;
     align-items: center;
@@ -48,41 +64,31 @@ body {
 .time {
     font-size: 5rem;
     font-weight: bold;
-    color: #333;
+    color: var(--text-main);
     font-family: 'Courier New', monospace;
     letter-spacing: 2px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     animation: pulse 2s ease-in-out infinite;
 }
 
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.02);
-    }
-}
-
 .period {
     font-size: 2rem;
-    color: #667eea;
+    color: var(--accent);
     font-weight: 600;
 }
 
 .date {
     font-size: 1.3rem;
-    color: #666;
+    color: var(--text-muted);
     margin-bottom: 2rem;
 }
 
-.controls {
-    margin: 2rem 0;
-}
-
+/* ===============================
+   BUTTONS
+================================ */
 .btn {
     padding: 1rem 2rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--primary), var(--accent));
     color: white;
     border: none;
     border-radius: 50px;
@@ -90,35 +96,34 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 4px 15px var(--shadow-medium);
 }
 
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+    box-shadow: 0 8px 25px var(--shadow-medium);
 }
 
 .btn:active {
     transform: translateY(-1px);
 }
 
+/* ===============================
+   TIMEZONE & STATS
+================================ */
 .timezone-info {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    color: #999;
+    color: var(--text-muted);
     font-size: 0.95rem;
     margin-top: 1.5rem;
 }
 
-.label {
-    font-weight: 600;
-}
-
 #timezone {
     font-family: 'Courier New', monospace;
-    color: #667eea;
+    color: var(--accent);
 }
 
 .stats-grid {
@@ -128,11 +133,11 @@ body {
 }
 
 .stat-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--bg-card);
     padding: 1.5rem;
     border-radius: 20px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px var(--shadow-light);
     backdrop-filter: blur(10px);
     transition: transform 0.3s ease;
 }
@@ -144,69 +149,36 @@ body {
 .stat-icon {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
+    color: var(--accent);
 }
 
 .stat-value {
     font-size: 2rem;
     font-weight: bold;
-    color: #667eea;
+    color: var(--accent);
     font-family: 'Courier New', monospace;
     margin-bottom: 0.3rem;
 }
 
 .stat-label {
     font-size: 0.85rem;
-    color: #666;
+    color: var(--text-muted);
     font-weight: 600;
 }
 
+/* ===============================
+   ANIMACIONES
+================================ */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 600px) {
-    .clock-card {
-        padding: 2rem;
-    }
-    
-    .greeting {
-        font-size: 1.4rem;
-    }
-    
-    .time {
-        font-size: 3rem;
-    }
-    
-    .period {
-        font-size: 1.5rem;
-    }
-    
-    .date {
-        font-size: 1.1rem;
-    }
-    
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
 }
 
-/* Animación de los dos puntos parpadeantes */
 @keyframes blink {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.3;
-    }
-}
-
-.time.blink {
-    animation: blink 1s ease-in-out infinite;
-}
+    0%, 100% { opacity: 1; }
+    50% { opac
