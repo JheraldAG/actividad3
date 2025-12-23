@@ -1,87 +1,151 @@
+/* ===============================
+   VARIABLES DE COLOR
+================================ */
+:root {
+    --primary: #667eea;
+    --secondary: #764ba2;
+    --success: #4caf50;
+    --error: #f44336;
+    --bg-light: #f4f6fb;
+    --text-main: #1f2933;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --card-bg: #ffffff;
+    --radius: 14px;
+    --transition: all 0.3s ease;
+}
+
+/* ===============================
+   RESET
+================================ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* ===============================
+   BODY
+================================ */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
     min-height: 100vh;
     display: flex;
     align-items: center;
     padding: 2rem;
+    color: var(--text-main);
 }
 
+/* ===============================
+   CONTAINER
+================================ */
 .container {
     width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
+    max-width: 520px;
+    margin: auto;
 }
 
+/* ===============================
+   FORM CARD
+================================ */
 .form-wrapper {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    background: var(--card-bg);
+    padding: 2.8rem;
+    border-radius: 22px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+    animation: fadeIn 0.6s ease;
 }
 
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===============================
+   TITLES
+================================ */
 h1 {
-    color: #333;
-    margin-bottom: 0.5rem;
     text-align: center;
+    margin-bottom: 0.4rem;
+    font-size: 2rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
     text-align: center;
-    color: #666;
+    color: var(--text-muted);
     margin-bottom: 2rem;
     font-size: 0.95rem;
 }
 
+/* ===============================
+   FORM GROUP
+================================ */
 .form-group {
     position: relative;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.6rem;
 }
 
+/* ===============================
+   LABEL
+================================ */
 label {
     display: block;
-    margin-bottom: 0.5rem;
-    color: #333;
+    margin-bottom: 0.4rem;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
+/* ===============================
+   INPUTS
+================================ */
 input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="number"] {
     width: 100%;
-    padding: 0.9rem;
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
+    padding: 1rem 1rem;
+    border-radius: var(--radius);
+    border: 2px solid var(--border);
     font-size: 1rem;
-    transition: all 0.3s ease;
+    transition: var(--transition);
+    background: var(--bg-light);
+}
+
+input::placeholder {
+    color: #9ca3af;
 }
 
 input:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    background: #fff;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
 }
 
+/* ===============================
+   VALID / INVALID STATES
+================================ */
 input.valid {
-    border-color: #4caf50;
+    border-color: var(--success);
+    background: #f1f8f4;
 }
 
 input.invalid {
-    border-color: #f44336;
+    border-color: var(--error);
+    background: #fff5f5;
 }
 
+/* ===============================
+   ERROR MESSAGE
+================================ */
 .error-message {
     display: none;
-    color: #f44336;
-    font-size: 0.85rem;
+    color: var(--error);
+    font-size: 0.8rem;
     margin-top: 0.3rem;
 }
 
@@ -89,110 +153,120 @@ input.invalid {
     display: block;
 }
 
+/* ===============================
+   SUCCESS ICON
+================================ */
 .success-icon {
     position: absolute;
     right: 1rem;
-    top: 2.8rem;
-    color: #4caf50;
+    top: 2.7rem;
     font-size: 1.2rem;
+    color: var(--success);
     display: none;
-    font-weight: bold;
 }
 
 .form-group.valid .success-icon {
     display: block;
 }
 
+/* ===============================
+   PASSWORD REQUIREMENTS
+================================ */
 .password-requirements {
     margin-top: 0.8rem;
-    padding: 0.8rem;
-    background: #f8f9fa;
-    border-radius: 8px;
+    padding: 0.9rem;
+    background: var(--bg-light);
+    border-radius: 12px;
     font-size: 0.85rem;
 }
 
 .requirement {
-    margin: 0.3rem 0;
-    color: #666;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    color: var(--text-muted);
+    margin: 0.3rem 0;
 }
 
 .req-icon {
-    display: inline-block;
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    border: 2px solid #ccc;
-    text-align: center;
-    line-height: 12px;
+    border: 2px solid #cbd5e1;
+    display: grid;
+    place-items: center;
+    font-size: 10px;
 }
 
 .requirement.met {
-    color: #4caf50;
+    color: var(--success);
 }
 
 .requirement.met .req-icon {
-    border-color: #4caf50;
-    background: #4caf50;
+    border-color: var(--success);
+    background: var(--success);
     color: white;
 }
 
 .requirement.met .req-icon::before {
-    content: '✓';
-    font-size: 10px;
+    content: "✓";
 }
 
+/* ===============================
+   CHECKBOX
+================================ */
 .checkbox-group {
     display: flex;
-    align-items: flex-start;
     gap: 0.8rem;
+    align-items: flex-start;
 }
 
-.checkbox-group input[type="checkbox"] {
-    width: auto;
-    margin-top: 0.2rem;
-    transform: scale(1.2);
+.checkbox-group input {
+    transform: scale(1.3);
+    accent-color: var(--primary);
 }
 
 .checkbox-group label {
-    margin: 0;
     font-weight: normal;
     cursor: pointer;
 }
 
+/* ===============================
+   SUBMIT BUTTON
+================================ */
 .submit-btn {
     width: 100%;
-    padding: 1rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    padding: 1.1rem;
+    margin-top: 1rem;
+    border-radius: var(--radius);
     border: none;
-    border-radius: 10px;
     font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 1rem;
+    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    transition: var(--transition);
 }
 
 .submit-btn:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.45);
 }
 
 .submit-btn:disabled {
-    opacity: 0.5;
+    background: #cbd5e1;
     cursor: not-allowed;
-    background: #ccc;
 }
 
+/* ===============================
+   SUMMARY
+================================ */
 .form-summary {
     margin-top: 1.5rem;
-    padding: 1rem;
-    background: #e8f5e9;
-    border-radius: 10px;
-    border-left: 4px solid #4caf50;
+    padding: 1.1rem;
+    border-radius: var(--radius);
+    background: #ecfdf5;
+    border-left: 5px solid var(--success);
     display: none;
 }
 
@@ -201,21 +275,24 @@ input.invalid {
 }
 
 .form-summary h3 {
-    color: #2e7d32;
-    margin-bottom: 0.5rem;
+    color: #166534;
+    margin-bottom: 0.4rem;
 }
 
 .form-summary p {
-    color: #555;
     font-size: 0.9rem;
+    color: #374151;
 }
 
+/* ===============================
+   RESPONSIVE
+================================ */
 @media (max-width: 600px) {
     .form-wrapper {
-        padding: 1.5rem;
+        padding: 1.8rem;
     }
-    
+
     h1 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
 }
